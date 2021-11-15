@@ -31,14 +31,13 @@ function closeModal() {
 }
 // *******
 
+// Implémenter entrées du formulaire
 
-const firstName = document.getElementById("prenom");
-const lastName = document.getElementById("nom");
+const firstName = document.getElementById("first");
+const lastName = document.getElementById("last");
 const email = document.getElementById("email");
-const birthdate = document.getElementById("birthday");
-const quantity = document.getElementById("combien");
-
-
+const birthdate = document.getElementById("birthdate");
+const partEvent = document.getElementById("quantity");
 
 
 
