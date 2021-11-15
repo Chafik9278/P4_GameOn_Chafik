@@ -35,8 +35,7 @@ function closeModal() {
 const firstName = document.getElementById("prenom");
 const lastName = document.getElementById("nom");
 const email = document.getElementById("email");
-const birthdate = document.getElementById("birthday");
-const quantity = document.getElementById("combien");
+
 
 
 
