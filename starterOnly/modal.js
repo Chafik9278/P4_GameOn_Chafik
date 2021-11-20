@@ -10,10 +10,15 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
+
 // Close modal 
 const modalFermer = document.querySelector(".close");
 
+// Validation formulaire 
+const formValide = document.getElementById("form_valide");
+
+// Btn Fermer Modal Valide 
+const btnFermerModalValide = document.querySelector(".btn__fermerModal");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -22,6 +27,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.style.display = "block";
 }
+
 // ********************************************
 // TODO : fermer la modale #1
 // ********************************************
@@ -29,28 +35,16 @@ modalFermer.addEventListener("click", closeModal);
 
 function closeModal() {
   modalbg.style.display = "none";
+
+
 }
+
+
 
 // ********************************************
 // Implémenter entrées du formulaire #2
-// ********************************************
-
-const firstName = document.getElementById("first");
-const lastName = document.getElementById("last");
-const email = document.getElementById("email");
-const birthdate = document.getElementById("birthdate");
-const partEvent = document.getElementById("quantity");
-
- // je pense utiliser 
-  //  - const regexLetters = new RegExp(/^[A-Za-z-]+$/);
-  //  - les conditions if elese 
-
-
 
 // ********************************************
-//  Ajouter validation ou messages d'erreur #3 
-// ********************************************
-
 //Des messages d'erreur spécifiques doivent apparaître sous l'entrée qui n'est pas correcte. Les messages d'erreur doivent s'afficher sous le champ de saisie associé. Exemples :
 
 // "Veuillez entrer 2 caractères ou plus pour le champ du nom."
@@ -58,9 +52,46 @@ const partEvent = document.getElementById("quantity");
 // "Vous devez vérifier que vous acceptez les termes et conditions."
 // "Vous devez entrer votre date de naissance."
  
- // je pense utiliser 
-  //  div avec id  et un inner html  pour texte
-  //  - les conditions if elese 
+
+const firstName = document.getElementById("first");
+
+
+  function formFirstName() {
+    const errorFirstName = document.getElementById("error_first_name");
+    const regexLetters = new RegExp(/^[A-Za-z-]+$/);
+
+
+    if (!firstName.value) {
+      errorFirstName.innerHTML = "Veuillez renseigner votre prénom";
+      errorFirstName.style.display = "block";
+      return false;
+
+
+    } else if (firstName.value.length < 2) {
+      errorFirstName.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom";
+      errorFirstName.style.display = "block";
+      return false;
+
+
+    } else {
+      errorFirstName.style.display = "none";
+      return true;
+    }
+  }
+
+
+
+  /* LORSQUE JE VALIDE  */
+const form_valide = document.getElementById("valide");
+
+form_valide.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  formFirstName();
+
+
+});
+
 
 
 
