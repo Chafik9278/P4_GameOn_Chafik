@@ -11,7 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 
-// Close modal 
+// Fermer modal 
 const modalFermer = document.querySelector(".close");
 
 // Validation formulaire 
@@ -36,9 +36,22 @@ modalFermer.addEventListener("click", closeModal);
 function closeModal() {
   modalbg.style.display = "none";
 
+  /* Modal formValide */
+  formValide.style.display = "none";
 
 }
+// ********************************************
 
+btnFermerModalValide.addEventListener("click", fermerModalValide);
+
+function fermerModalValide() {
+
+  modalbg.style.display = "none";
+
+  /* Modal formValide */
+  formValide.style.display = "none";
+ 
+}
 
 
 // ********************************************
@@ -61,13 +74,7 @@ const firstName = document.getElementById("first");
     const regexLetters = new RegExp(/^[A-Za-z-]+$/);
 
 
-    if (!firstName.value) {
-      errorFirstName.innerHTML = "Veuillez renseigner votre prénom";
-      errorFirstName.style.display = "block";
-      return false;
-
-
-    } else if (firstName.value.length < 2) {
+   if (firstName.value.length < 2) {
       errorFirstName.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom";
       errorFirstName.style.display = "block";
       return false;
@@ -75,6 +82,8 @@ const firstName = document.getElementById("first");
 
     } else {
       errorFirstName.style.display = "none";
+
+      formValide.style.display = "block";
       return true;
     }
   }
@@ -87,7 +96,7 @@ const form_valide = document.getElementById("valide");
 form_valide.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  formFirstName();
+  formFirstName(); 
 
 
 });
