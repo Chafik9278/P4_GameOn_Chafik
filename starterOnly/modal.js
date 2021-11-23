@@ -98,6 +98,8 @@ function formFirstName() {
   }
 }
 
+const lastName = document.getElementById("last");
+
 function formLastName() {
   const errorLastName = document.getElementById("error_last_name");
   const regexLetters = new RegExp(/^[A-Za-z-]+$/);
@@ -117,6 +119,9 @@ function formLastName() {
     return true;
   }
 }
+
+
+const email = document.getElementById("email");
 
 function formEmail() {
   const errorEmail = document.getElementById("error_email");
@@ -145,7 +150,10 @@ const form_valide = document.getElementById("valide");
 form_valide.addEventListener("submit", function (event) {
   event.preventDefault();
 
+
   formFirstName();
+  formLastName();
+  formEmail();
 
 
 });
