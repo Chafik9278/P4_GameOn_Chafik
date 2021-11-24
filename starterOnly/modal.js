@@ -64,16 +64,12 @@ function fermerModalValide() {
 // ********************************************
 // Implémenter entrées du formulaire #2
 
+
 // ********************************************
-
-// "Veuillez entrer 2 caractères ou plus pour le champ du nom."
-// "Vous devez choisir une option."
-// "Vous devez vérifier que vous acceptez les termes et conditions."
-// "Vous devez entrer votre date de naissance."
-
-
+// ********************************************
 const firstName = document.getElementById("first");
 
+// ********************************************
 
 function formFirstName() {
   const errorFirstName = document.getElementById("error_first_name");
@@ -98,8 +94,11 @@ function formFirstName() {
   }
 }
 
+// ********************************************
+// ********************************************
 const lastName = document.getElementById("last");
 
+// ********************************************
 function formLastName() {
   const errorLastName = document.getElementById("error_last_name");
   const regexLetters = new RegExp(/^[A-Za-z-]+$/);
@@ -121,8 +120,11 @@ function formLastName() {
 }
 
 
+// ********************************************
+// ********************************************
 const email = document.getElementById("email");
 
+// ********************************************
 function formEmail() {
   const errorEmail = document.getElementById("error_email");
   const regexEmail = new RegExp(/\S+@\S+\.\S+/);
@@ -142,7 +144,92 @@ function formEmail() {
   }
 }
 
+// ********************************************
+// ********************************************
+const birthdate = document.getElementById("birthdate");
 
+// ********************************************
+
+function formBirthDate() {
+  const errorBirthdate = document.getElementById("error_birthdate");
+  if (!birthdate.value) {
+    errorBirthdate.innerHTML = "Veuillez renseigner votre date d'anniversaire";
+    errorBirthdate.style.display = "block";
+    return false;
+  } else if (birthdate.type !== "date") {
+    errorBirthdate.innerHTML = "Veuillez renseigner une date";
+    errorBirthdate.style.display = "block";
+  } else {
+    errorBirthdate.style.display = "none";
+    return true;
+  }
+}
+
+// ********************************************
+// ********************************************
+
+const partEvent = document.getElementById("quantity");
+
+// ********************************************
+function formPartEvent() {
+  const errorPartEvent = document.getElementById("error_partevent");
+  const regexPartEvent = new RegExp("^[0-9][0-9]?$|^99$");
+  if (!partEvent.value) {
+    errorPartEvent.innerHTML =
+      "Veuillez renseigner votre nombre de participation";
+    errorPartEvent.style.display = "block";
+    return false;
+  } else if (!regexPartEvent.test(partEvent.value)) {
+    errorPartEvent.innerHTML = "Veuillez renseigner un nombre entre 0 et 99";
+    errorPartEvent.style.display = "block";
+    return false;
+  } else {
+    errorPartEvent.style.display = "none";
+    return true;
+  }
+}
+
+// ********************************************
+const checkCondition = document.getElementById("checkbox1");
+
+// ********************************************
+function formCheckCondition() {
+  const errorCheckCondition = document.getElementById("error_checkCondition");
+  if (!checkCondition.checked) {
+    errorCheckCondition.innerHTML =
+      "Veuillez accepter les conditions d'utilisation";
+    errorCheckCondition.style.display = "block";
+    return false;
+  } else {
+    errorCheckCondition.style.display = "none";
+    return true;
+  }
+}
+
+
+
+// ********************************************
+const radioLocation = document.getElementsByName("location");
+
+// ********************************************
+function formRadioLocation() {
+  const errorRadioLocation = document.getElementById("error_radioLocation");
+  const result = Array.from(radioLocation).filter(
+    (radio) => radio.checked === true
+  );
+  if (result.length > 0) {
+    errorRadioLocation.style.display = "none";
+    return true;
+  } else {
+    errorRadioLocation.innerHTML = "Veuillez selectionner une ville";
+    errorRadioLocation.style.display = "block";
+    return false;
+  }
+}
+
+
+
+// ********************************************
 
 /* LORSQUE JE VALIDE  */
 const form_valide = document.getElementById("valide");
@@ -154,22 +241,13 @@ form_valide.addEventListener("submit", function (event) {
   formFirstName();
   formLastName();
   formEmail();
-
+  formBirthDate();
+  formPartEvent();
+  formRadioLocation();
+  formCheckCondition();
 
 });
 
-
-
-
-// ********************************************
-// Ajouter confirmation quand envoie réussi #4 
-// ********************************************
-
-
-//Après une validation réussie, inclure un message de confirmation de la soumission réussie pour l'utilisateur (ex. "Merci ! Votre réservation a été reçue.")
-
-
-// je sais pas encore comment faire 
 
 // ********************************************
 //Tests manuels #5 

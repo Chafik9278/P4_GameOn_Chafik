@@ -590,16 +590,16 @@ footer {
 /* Error form */
 
 #error_first_name{
- 
   display: none;
 }
 
 
 .error {
-  font-size: 18px;
+  margin-top: 5px;
   color: white;
-  background: red;
-  width:100%;
+  font-size: 15px;
+  background: darkred ;
+  border-radius: 8px;
  
 }
 
