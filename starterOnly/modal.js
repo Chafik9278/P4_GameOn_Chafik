@@ -88,8 +88,6 @@ function formFirstName() {
 
   } else {
     errorFirstName.style.display = "none";
-
-    formValide.style.display = "block";
     return true;
   }
 }
@@ -114,7 +112,6 @@ function formLastName() {
    } else {
     errorLastName.style.display = "none";
 
-    formValide.style.display = "block";
     return true;
   }
 }
@@ -139,7 +136,6 @@ function formEmail() {
   } else {
     errorEmail.style.display = "none";
 
-    formValide.style.display = "block";
     return true;
   }
 }
@@ -245,6 +241,21 @@ form_valide.addEventListener("submit", function (event) {
   formPartEvent();
   formRadioLocation();
   formCheckCondition();
+
+  if (
+    formFirstName() &&
+    formLastName() &&
+    formEmail() &&
+    formBirthDate() &&
+    formPartEvent() &&
+    formCheckCondition() &&
+    formRadioLocation()
+  ) {
+    _
+  } else {
+    
+    formValide.style.display = "none";
+  }
 
 });
 
