@@ -88,13 +88,14 @@ function formLastName() {
     errorLastName.innerHTML = "Veuillez renseigner 2 caractères au minimumn";
     errorLastName.style.display = "block";
     return false;
+
   } else if (!regexLetters.test(lastName.value)) {
     errorLastName.innerHTML = "Seul les caractéres alphanumériques sont acceptés, utilisé (-) pour les noms composés";
     errorLastName.style.display = "block";
     return false
+
    } else {
     errorLastName.style.display = "none";
-
     return true;
   }
 }
@@ -121,7 +122,6 @@ function formEmail() {
 
   } else {
     errorEmail.style.display = "none";
-
     return true;
   }
 }
@@ -185,8 +185,7 @@ function formCheckCondition() {
   const errorCheckCondition = document.getElementById("error_checkCondition");
 
   if (!checkCondition.checked) {
-    errorCheckCondition.innerHTML =
-      "Veuillez accepter les conditions d'utilisation";
+    errorCheckCondition.innerHTML = "Veuillez accepter les conditions d'utilisation";
     errorCheckCondition.style.display = "block";
     return false;
 
@@ -244,11 +243,10 @@ form_valide.addEventListener("submit", function (event) {
     formCheckCondition() &&
     formRadioLocation()
   ) {
-    _
+    // underscore permet de reinitialiser le doc 
   } else 
   
   {
-    
     formValide.style.display = "none";
   }
 
