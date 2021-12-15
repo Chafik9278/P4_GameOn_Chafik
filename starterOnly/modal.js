@@ -146,10 +146,11 @@ const birthdate = document.getElementById("birthdate");
 function formBirthDate() {
   const errorBirthdate = document.getElementById("error_birthdate");
 
-  if (!birthdate.value) {
+  if (!birthdate.value ) {
     errorBirthdate.innerHTML = "Veuillez renseigner votre date d'anniversaire";
     errorBirthdate.style.display = "block";
     return false;
+
 
   } else {
     errorBirthdate.style.display = "none";
@@ -204,23 +205,7 @@ function formCheckCondition() {
 
 
 
-// ********************************************
-const radioLocation = document.getElementsByName("location");
 
-// ********************************************
-function formRadioLocation() {
-  const errorRadioLocation = document.getElementById("error_radioLocation");
- 
-  if (radioLocation.length > 0) {
-    errorRadioLocation.style.display = "none";
-    return true;
-    
-  } else {
-    errorRadioLocation.innerHTML = "Veuillez selectionner une ville";
-    errorRadioLocation.style.display = "block";
-    return false;
-  }
-}
 
 // ********************************************
 // Ajouter validation ou messages d'erreur #3
@@ -246,7 +231,6 @@ form_valide.addEventListener("submit", function (event) {
   formEmail();
   formBirthDate();
   formPartEvent();
-  formRadioLocation();
   formCheckCondition();
 
   if (
@@ -255,8 +239,8 @@ form_valide.addEventListener("submit", function (event) {
     formEmail() &&
     formBirthDate() &&
     formPartEvent() &&
-    formCheckCondition() &&
-    formRadioLocation()
+    formCheckCondition()
+   
   ) {
     // underscore permet de reinitialiser le doc 
 
