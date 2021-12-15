@@ -55,16 +55,23 @@
       <div class="content">
 
 
-        <span class="close" ></span>
-     
+
+        <!-- // // Fermer modal  -->
+        <!-- // // Fermer modal  -->
+
+        <span class="close"></span>
+
+        <!-- // // Fermer modal  -->
+        <!-- // // Fermer modal  -->
+
+
         <div class="modal-body">
 
-
-          <form name="reserve" action="index.html" method="get"  id="valide" onsubmit="return validate();">
+          <form name="reserve" action="index.html" method="get" id="valide" onsubmit="return validate();">
 
 
             <div class="formData">
-              <label >Prénom</label><br>
+              <label>Prénom</label><br>
               <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
 
               <span id="error_first_name" class="error"></span>
@@ -74,7 +81,7 @@
 
             <div class="formData">
               <label for="last">Nom</label><br>
-              <input class="text-control" type="text" id="last" name="last"   /><br>
+              <input class="text-control" type="text" id="last" name="last" /><br>
               <span id="error_last_name" class="error"></span>
             </div>
 
@@ -88,7 +95,7 @@
 
             <div class="formData">
               <label for="birthdate">Date de naissance</label><br>
-              <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
+              <input class="text-control" type="date" id="birthdate" name="birthdate"  min="1930-01-01" max="2020-01-01" /><br>
               <span id="error_birthdate" class="error"></span>
             </div>
 
@@ -97,14 +104,14 @@
               <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
               <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               <span id="error_partevent" class="error"></span>
-            
+
             </div>
 
 
             <p class="text-label">Quelles villes ?</p>
             <div class="formData">
               <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
-              
+
               <label class="checkbox-label" for="location1">
                 <span class="checkbox-icon"></span>
                 New York</label>
@@ -157,7 +164,7 @@
           <div id="form_valide">
             <div class="modal__form_valide">
               <span class="close" onclick="closeModal()"></span>
-              <h4 class="validation">" Merci ! Votre réservation a été reçue."</h4>
+              <h4 class="validation"> Merci ! Votre réservation a été reçue </h4>
               <button class="btn__fermerModal">
 
                 Fermer

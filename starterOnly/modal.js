@@ -27,7 +27,7 @@ function launchModal() {
 // ********************************************
 // TODO : fermer la modale #1
 // ********************************************
-// // Fermer modal 
+  // // Fermer modal 
 // const modalFermer = document.querySelector(".close");
 modalFermer.addEventListener("click", closeModal);
 function closeModal() {
@@ -151,10 +151,6 @@ function formBirthDate() {
     errorBirthdate.style.display = "block";
     return false;
 
-  } else if (birthdate.type !== "date") {
-    errorBirthdate.innerHTML = "Veuillez renseigner une date";
-    errorBirthdate.style.display = "block";
-
   } else {
     errorBirthdate.style.display = "none";
     return true;
@@ -263,6 +259,8 @@ form_valide.addEventListener("submit", function (event) {
     formRadioLocation()
   ) {
     // underscore permet de reinitialiser le doc 
+
+    // Conserver les données du formulaire (ne pas effacer le formulaire) lorsqu'il ne passe pas la validation.
   } else 
   
   {
