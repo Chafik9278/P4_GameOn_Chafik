@@ -5,6 +5,7 @@
 4. Vous ne devez utiliser que du CSS personnalisé et du JavaScript pur, sans jQuery, Bootstrap ou autre librairie.
 #   P 4 _ G a m e O n _ C h a f i k 
 
+http://127.0.0.1:5503/starterOnly/index.html
 ------
 
 1- fermer la modale #1
