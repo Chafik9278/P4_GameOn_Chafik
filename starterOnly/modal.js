@@ -11,15 +11,20 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
+
 // Fermer modal 
 const modalFermer = document.querySelector(".close");
+
 // Validation formulaire 
 const formValide = document.getElementById("form_valide");
+
 // Btn Fermer Modal Valide 
 const btnFermerModalValide = document.querySelector(".btn__fermerModal");
+
 // ********************************************
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
@@ -42,23 +47,33 @@ function fermerModalValide() {
   /* Modal formValide */
   formValide.style.display = "none";
 }
+
+
 // ********************************************
 // Implémenter entrées du formulaire #2
 // ********************************************
 
 // (1) Lier les labels aux entrées dans le HTML en utilisant les attributs "for" et "id" dans le code existant. Corriger le code HTML quand nécessaire.
+
 // (2) Utiliser du JavaScript pur (pas de jQuery) pour terminer le formulaire :
 // Le formulaire doit être valide quand l'utilisateur clique sur "Submit"
+
+
 // Les données doivent être saisies correctement :
+
 // (1) Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
 // (2) Le champ du nom de famille a un minimum de 2 caractères / n'est pas vide.
 // (3) L'adresse électronique est valide.
 // (4) Pour le nombre de concours, une valeur numérique est saisie.
 // (5) Un bouton radio est sélectionné.
 // (6) La case des conditions générales est cochée, l'autre case est facultative / peut être laissée décochée.
+
 // Conserver les données du formulaire (ne pas effacer le formulaire) lorsqu'il ne passe pas la validation.
 // ********************************************
 // ********************************************
+
+
+
 const firstName = document.getElementById("first");
 
 // ********************************************
@@ -67,7 +82,7 @@ function formFirstName() {
   const errorFirstName = document.getElementById("error_first_name");
   const regexLetters = new RegExp(/^[A-Za-z-]+$/);
 
-
+// (1) Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
   if (firstName.value.length < 2) {
     errorFirstName.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom";
     errorFirstName.style.display = "block";
@@ -95,6 +110,7 @@ function formLastName() {
   const errorLastName = document.getElementById("error_last_name");
   const regexLetters = new RegExp(/^[A-Za-z-]+$/);
 
+  // (2) Le champ du nom de famille a un minimum de 2 caractères / n'est pas vide.
   if (lastName.value.length < 2) {
     errorLastName.innerHTML = "Veuillez renseigner 2 caractères au minimumn";
     errorLastName.style.display = "block";
@@ -121,6 +137,9 @@ function formEmail() {
   const errorEmail = document.getElementById("error_email");
   const regexEmail = new RegExp(/\S+@\S+\.\S+/);
 
+
+  // (3) L'adresse électronique est valide.
+
   if (!email.value) {
     errorEmail.innerHTML = "Veuillez renseigner votre email";
     errorEmail.style.display = "block";
@@ -146,6 +165,9 @@ const birthdate = document.getElementById("birthdate");
 function formBirthDate() {
   const errorBirthdate = document.getElementById("error_birthdate");
 
+
+  // "Vous devez entrer votre date de naissance."
+
   if (!birthdate.value ) {
     errorBirthdate.innerHTML = "Veuillez renseigner votre date d'anniversaire";
     errorBirthdate.style.display = "block";
@@ -168,6 +190,10 @@ function formPartEvent() {
   const errorPartEvent = document.getElementById("error_partevent");
   const regexPartEvent = new RegExp("^[0-9][0-9]?$|^99$");
 
+
+  // (4) Pour le nombre de concours, une valeur numérique est saisie.
+
+  // "Vous devez choisir une option."
   if (!partEvent.value) {
     errorPartEvent.innerHTML =
       "Veuillez renseigner votre nombre de participation";
@@ -186,12 +212,38 @@ function formPartEvent() {
 }
 
 // ********************************************
+const radioLocation = document.getElementsByName("location");
+
+// ********************************************
+function formRadioLocation() {
+  const errorRadioLocation = document.getElementById("error_radioLocation");
+  const result = Array.from(radioLocation).filter(
+    (radio) => radio.checked === true
+  );
+
+  // (5) Un bouton radio est sélectionné.
+
+  if (result.length > 0) {
+    errorRadioLocation.style.display = "none";
+    return true;
+  } else {
+    errorRadioLocation.innerHTML = "Veuillez selectionner une ville";
+    errorRadioLocation.style.display = "block";
+    return false;
+  }
+}
+
+
+// ********************************************
 const checkCondition = document.getElementById("checkbox1");
 
 // ********************************************
 function formCheckCondition() {
   const errorCheckCondition = document.getElementById("error_checkCondition");
 
+  // (6) La case des conditions générales est cochée, l'autre case est facultative / peut être laissée décochée.
+
+  // "Vous devez vérifier que vous acceptez les termes et conditions."
   if (!checkCondition.checked) {
     errorCheckCondition.innerHTML = "Veuillez accepter les conditions d'utilisation";
     errorCheckCondition.style.display = "block";
@@ -202,8 +254,6 @@ function formCheckCondition() {
     return true;
   }
 }
-
-
 
 
 
@@ -219,6 +269,12 @@ function formCheckCondition() {
 // "Vous devez entrer votre date de naissance."
 // ********************************************
 
+
+// ********************************************
+// Ajouter confirmation quand envoie réussi #4
+// ********************************************
+// Après une validation réussie, inclure un message de confirmation de la soumission réussie pour l'utilisateur (ex. "Merci ! Votre réservation a été reçue.")
+
 /* LORSQUE JE VALIDE  */
 const form_valide = document.getElementById("valide");
 
@@ -231,6 +287,7 @@ form_valide.addEventListener("submit", function (event) {
   formEmail();
   formBirthDate();
   formPartEvent();
+  formRadioLocation();
   formCheckCondition();
 
   if (
@@ -239,10 +296,10 @@ form_valide.addEventListener("submit", function (event) {
     formEmail() &&
     formBirthDate() &&
     formPartEvent() &&
+    formRadioLocation() &&
     formCheckCondition()
    
   ) {
-    // underscore permet de reinitialiser le doc 
 
     // Conserver les données du formulaire (ne pas effacer le formulaire) lorsqu'il ne passe pas la validation.
   } else 
@@ -252,11 +309,6 @@ form_valide.addEventListener("submit", function (event) {
   }
 
 });
-
-// ********************************************
-// Ajouter confirmation quand envoie réussi #4
-// ********************************************
-// Après une validation réussie, inclure un message de confirmation de la soumission réussie pour l'utilisateur (ex. "Merci ! Votre réservation a été reçue.")
 
 
 // ********************************************
