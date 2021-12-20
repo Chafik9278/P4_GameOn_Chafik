@@ -80,7 +80,7 @@ const firstName = document.getElementById("first");
 
 function formFirstName() {
   const errorFirstName = document.getElementById("error_first_name");
-  const regexLetters = new RegExp(/^[A-Za-z-]+$/);
+  const regexLetters = new RegExp(/^[A-Z a-z-]+$/);
 
 // (1) Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
   if (firstName.value.length < 2) {
@@ -108,7 +108,7 @@ const lastName = document.getElementById("last");
 // ********************************************
 function formLastName() {
   const errorLastName = document.getElementById("error_last_name");
-  const regexLetters = new RegExp(/^[A-Za-z-]+$/);
+  const regexLetters = new RegExp(/^[A-Z a-z-]+$/);
 
   // (2) Le champ du nom de famille a un minimum de 2 caractères / n'est pas vide.
   if (lastName.value.length < 2) {
