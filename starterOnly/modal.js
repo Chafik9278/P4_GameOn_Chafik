@@ -12,13 +12,13 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 
-// Fermer modal 
+// Fermer modal
 const modalFermer = document.querySelector(".close");
 
-// Validation formulaire 
+// Validation formulaire
 const formValide = document.getElementById("form_valide");
 
-// Btn Fermer Modal Valide 
+// Btn Fermer Modal Valide
 const btnFermerModalValide = document.querySelector(".btn__fermerModal");
 
 // ********************************************
@@ -32,7 +32,7 @@ function launchModal() {
 // ********************************************
 // TODO : fermer la modale #1
 // ********************************************
-  // // Fermer modal 
+// // Fermer modal
 // const modalFermer = document.querySelector(".close");
 modalFermer.addEventListener("click", closeModal);
 function closeModal() {
@@ -48,7 +48,6 @@ function fermerModalValide() {
   formValide.style.display = "none";
 }
 
-
 // ********************************************
 // Implémenter entrées du formulaire #2
 // ********************************************
@@ -57,7 +56,6 @@ function fermerModalValide() {
 
 // (2) Utiliser du JavaScript pur (pas de jQuery) pour terminer le formulaire :
 // Le formulaire doit être valide quand l'utilisateur clique sur "Submit"
-
 
 // Les données doivent être saisies correctement :
 
@@ -72,8 +70,6 @@ function fermerModalValide() {
 // ********************************************
 // ********************************************
 
-
-
 const firstName = document.getElementById("first");
 
 // ********************************************
@@ -82,21 +78,30 @@ function formFirstName() {
   const errorFirstName = document.getElementById("error_first_name");
   const regexLetters = new RegExp(/^[A-Z a-z-]+$/);
 
-// (1) Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
+  // (1) Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
   if (firstName.value.length < 2) {
-    errorFirstName.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom";
+    errorFirstName.innerHTML =
+      "Veuillez entrer 2 caractères ou plus pour le champ du nom";
     errorFirstName.style.display = "block";
+
+    firstName.style.border = "solid red 2px";
+
     return false;
 
-
+    //j'aurais pu mettre un trim après ". value" mais J'ai choisi de faire une condition//
   } else if (!regexLetters.test(firstName.value)) {
-    errorFirstName.innerHTML = "Seul les caractéres alphanumériques sont acceptés, utilisé (-) pour les prénoms composés";
+    errorFirstName.innerHTML =
+      "Seul les caractéres alphanumériques sont acceptés, utilisé (-) pour les prénoms composés";
     errorFirstName.style.display = "block";
-    return false
 
+    firstName.style.border = "solid red 2px";
+
+    return false;
   } else {
     errorFirstName.style.display = "none";
+    firstName.style.border = "none";
     formValide.style.display = "block";
+
     return true;
   }
 }
@@ -114,19 +119,25 @@ function formLastName() {
   if (lastName.value.length < 2) {
     errorLastName.innerHTML = "Veuillez renseigner 2 caractères au minimumn";
     errorLastName.style.display = "block";
+
+    lastName.style.border = "solid red 2px";
+
     return false;
 
+    //j'aurais pu mettre un trim après ". value" mais J'ai choisi de faire une condition//
   } else if (!regexLetters.test(lastName.value)) {
-    errorLastName.innerHTML = "Seul les caractéres alphanumériques sont acceptés, utilisé (-) pour les noms composés";
+    errorLastName.innerHTML =
+      "Seul les caractéres alphanumériques sont acceptés, utilisé (-) pour les noms composés";
     errorLastName.style.display = "block";
-    return false
+    lastName.style.border = "solid red 2px";
 
-   } else {
+    return false;
+  } else {
     errorLastName.style.display = "none";
+    lastName.style.border = "none";
     return true;
   }
 }
-
 
 // ********************************************
 // ********************************************
@@ -137,21 +148,21 @@ function formEmail() {
   const errorEmail = document.getElementById("error_email");
   const regexEmail = new RegExp(/\S+@\S+\.\S+/);
 
-
   // (3) L'adresse électronique est valide.
 
   if (!email.value) {
     errorEmail.innerHTML = "Veuillez renseigner votre email";
     errorEmail.style.display = "block";
+    email.style.border = "solid red 2px";
     return false;
-
   } else if (!regexEmail.test(email.value)) {
     errorEmail.innerHTML = "Veuillez renseigner un email valide";
     errorEmail.style.display = "block";
+    email.style.border = "solid red 2px";
     return false;
-
   } else {
     errorEmail.style.display = "none";
+    email.style.border = "none";
     return true;
   }
 }
@@ -165,17 +176,16 @@ const birthdate = document.getElementById("birthdate");
 function formBirthDate() {
   const errorBirthdate = document.getElementById("error_birthdate");
 
-
   // "Vous devez entrer votre date de naissance."
 
-  if (!birthdate.value ) {
+  if (!birthdate.value) {
     errorBirthdate.innerHTML = "Veuillez renseigner votre date d'anniversaire";
     errorBirthdate.style.display = "block";
+    birthdate.style.border = "solid red 2px";
     return false;
-
-
   } else {
     errorBirthdate.style.display = "none";
+    birthdate.style.border = "none";
     return true;
   }
 }
@@ -190,7 +200,6 @@ function formPartEvent() {
   const errorPartEvent = document.getElementById("error_partevent");
   const regexPartEvent = new RegExp("^[0-9][0-9]?$|^99$");
 
-
   // (4) Pour le nombre de concours, une valeur numérique est saisie.
 
   // "Vous devez choisir une option."
@@ -198,15 +207,16 @@ function formPartEvent() {
     errorPartEvent.innerHTML =
       "Veuillez renseigner votre nombre de participation";
     errorPartEvent.style.display = "block";
+    partEvent.style.border = "solid red 2px";
     return false;
-
   } else if (!regexPartEvent.test(partEvent.value)) {
     errorPartEvent.innerHTML = "Veuillez renseigner un nombre entre 0 et 99";
     errorPartEvent.style.display = "block";
+    partEvent.style.border = "solid red 2px";
     return false;
-
   } else {
     errorPartEvent.style.display = "none";
+    partEvent.style.border = "none";
     return true;
   }
 }
@@ -233,7 +243,6 @@ function formRadioLocation() {
   }
 }
 
-
 // ********************************************
 const checkCondition = document.getElementById("checkbox1");
 
@@ -245,17 +254,15 @@ function formCheckCondition() {
 
   // "Vous devez vérifier que vous acceptez les termes et conditions."
   if (!checkCondition.checked) {
-    errorCheckCondition.innerHTML = "Veuillez accepter les conditions d'utilisation";
+    errorCheckCondition.innerHTML =
+      "Veuillez accepter les conditions d'utilisation";
     errorCheckCondition.style.display = "block";
     return false;
-
   } else {
     errorCheckCondition.style.display = "none";
     return true;
   }
 }
-
-
 
 // ********************************************
 // Ajouter validation ou messages d'erreur #3
@@ -269,7 +276,6 @@ function formCheckCondition() {
 // "Vous devez entrer votre date de naissance."
 // ********************************************
 
-
 // ********************************************
 // Ajouter confirmation quand envoie réussi #4
 // ********************************************
@@ -280,7 +286,6 @@ const form_valide = document.getElementById("valide");
 
 form_valide.addEventListener("submit", function (event) {
   event.preventDefault();
-
 
   formFirstName();
   formLastName();
@@ -298,18 +303,12 @@ form_valide.addEventListener("submit", function (event) {
     formPartEvent() &&
     formRadioLocation() &&
     formCheckCondition()
-   
   ) {
-
     // Conserver les données du formulaire (ne pas effacer le formulaire) lorsqu'il ne passe pas la validation.
-  } else 
-  
-  {
+  } else {
     formValide.style.display = "none";
   }
-
 });
-
 
 // ********************************************
 // Tests manuels #5

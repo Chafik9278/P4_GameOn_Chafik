@@ -627,10 +627,9 @@ footer {
 
 .error {
   margin-top: 5px;
-  color: white;
+  color: red;
   font-size: 15px;
-  background: darkred ;
-  border-radius: 8px;
+
  
 }
 
