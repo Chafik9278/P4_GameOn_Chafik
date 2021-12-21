@@ -88,15 +88,25 @@ function formFirstName() {
 
     return false;
 
-    //j'aurais pu mettre un trim après ". value" mais J'ai choisi de faire une condition//
-  } else if (!regexLetters.test(firstName.value)) {
+  } else if (!firstName.value.trim()) {
     errorFirstName.innerHTML =
-      "Seul les caractéres alphanumériques sont acceptés, utilisé (-) pour les prénoms composés";
+      "Merci de ne pas mettre que des espaces  ";
     errorFirstName.style.display = "block";
 
     firstName.style.border = "solid red 2px";
 
     return false;
+  
+  } else if (!regexLetters.test(firstName.value)) {
+    errorFirstName.innerHTML =
+      "Seul les caractéres alphanumériques sont acceptés, utilisé (-) pour les prénoms composés";
+    errorFirstName.style.display = "block";
+    firstName.style.border = "solid red 2px";
+
+    return false;
+
+
+
   } else {
     errorFirstName.style.display = "none";
     firstName.style.border = "none";
@@ -118,13 +128,21 @@ function formLastName() {
   // (2) Le champ du nom de famille a un minimum de 2 caractères / n'est pas vide.
   if (lastName.value.length < 2) {
     errorLastName.innerHTML = "Veuillez renseigner 2 caractères au minimumn";
+    
+    errorLastName.style.display = "block";
+    lastName.style.border = "solid red 2px";
+
+    return false;
+
+  } else if (!lastName.value.trim()) {
+    errorLastName.innerHTML =
+      "Merci de ne pas mettre que des espaces  ";
     errorLastName.style.display = "block";
 
     lastName.style.border = "solid red 2px";
 
     return false;
-
-    //j'aurais pu mettre un trim après ". value" mais J'ai choisi de faire une condition//
+    
   } else if (!regexLetters.test(lastName.value)) {
     errorLastName.innerHTML =
       "Seul les caractéres alphanumériques sont acceptés, utilisé (-) pour les noms composés";
